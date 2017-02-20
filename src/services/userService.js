@@ -6,7 +6,7 @@ import xhr from './xhr/'
 class UserService {
 
   checkLogin () {
-    return xhr({ url: '/user' })
+    return xhr({ url: '/users/queryAll' })
   }
 
   /**
@@ -16,7 +16,7 @@ class UserService {
   login (userData) {
     return xhr({
       method: 'post',
-      url: '/login',
+      url: '/add',
       body: userData
     })
   }

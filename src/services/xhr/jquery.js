@@ -6,11 +6,11 @@ const xhr = ({ url, body = null, method = 'get' }) => {
   $.ajax({
     type: method,
     url: rootPath + url,
-    data: body
-    // xhrFields: { // 跨域允许带上 cookie
-    //   withCredentials: [域名]
-    // },
-    // crossDomain: true
+    data: body,
+    xhrFields: { // 跨域允许带上 cookie
+      withCredentials: true
+    },
+    crossDomain: true
   })
   .done(defer.resolve)
   .fail(errHandler)

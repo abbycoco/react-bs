@@ -15,7 +15,6 @@ const App = ({ children, location }) => (
       {/* 相当于 Vue Demo 中的根 router-view */}
       { children }
     </div>
-
     { DevTools && <DevTools /> }
   </div>
 )
