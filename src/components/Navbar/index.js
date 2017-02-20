@@ -3,8 +3,12 @@ import { connect } from 'react-redux'
 import { IndexLink, Link } from 'react-router'
 import LoginForm from './LoginForm'
 import LogoutDropdown from './LogoutDropdown'
+import WeUI from 'react-weui'
+import 'weui'
+import 'react-weui/lib/react-weui.min.css'
 
 /* 导航栏全局显示，控制着用户的登录注销 */
+const {Button} = WeUI
 
 @connect( // 功能同 UTIL/createContainer
   ({ userData }) => ({ userData }),
@@ -28,6 +32,7 @@ export default class Navbar extends Component {
         <div className="col-md-12 column">
           <nav className="navbar navbar-default" role="navigation">
             <div className="navbar-header">
+              <Button>woaini</Button>
               <button
                 type="button"
                 className="navbar-toggle"
