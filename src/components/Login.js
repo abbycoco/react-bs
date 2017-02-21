@@ -2,13 +2,15 @@
  * Created by sks on 16/10/10.
  */
 import React from 'react'
+import { connect } from 'react-redux'
 import {TextField} from 'material-ui'
 class Login extends React.Component {
     constructor(props) {
         super(props);
     }
     showName = (event, newValue) =>{
-        console.log(newValue)
+        console.log(newValue);
+        this.props.addUser(newValue);
     }
 
     render() {
@@ -22,4 +24,4 @@ class Login extends React.Component {
         )
     }
 }
-export default Login
+export default connect()(Login)
