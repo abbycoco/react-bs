@@ -1,32 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router'
 /**
- * 本组件为欢迎页（首页）
- * 由于几乎没有交互逻辑
- * 因此可以不使用类的写法
- * 
- * 实际上，ES6 的类经由 Babel 转码后
- * 其实还是返回一个类似的函数
+ * Created by sks on 16/10/10.
  */
-const Welcome = () => (
-  <div className="jumbotron">
-    <h1>欢迎使用 <br/> React Demo</h1>
-    <p>
-      <Link
-        to="/msg"
-        role="button"
-        className="btn btn-success btn-lg">
-        前往留言板 &gt;
-      </Link>
-      &nbsp;
-      <Link
-        to="/todo"
-        role="button"
-        className="btn btn-success btn-lg">
-        前往待办事项(新功能) &gt;
-      </Link>
-    </p>
-  </div>
-)
+import React from 'react'
+import {TextField} from 'material-ui'
+class Login extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    showName = (event, newValue) =>{
+        console.log(newValue)
+    }
 
-export default Welcome
+    render() {
+        return (<div style={{width: '100%', height: '100%'}}>
+                <TextField
+                    hintText="起个名字吧"
+                    floatingLabelText="请输入你的昵称"
+                    onChange={this.showName}
+                /><br />
+            </div>
+        )
+    }
+}
+export default Login
