@@ -4,13 +4,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {TextField} from 'material-ui'
+import {addUser} from '../redux/actions/Login'
 class Login extends React.Component {
     constructor(props) {
         super(props);
     }
     showName = (event, newValue) =>{
         console.log(newValue);
-        this.props.addUser(newValue);
+        this.props.dispatch(addUser(newValue));
     }
 
     render() {
