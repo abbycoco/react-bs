@@ -4,20 +4,14 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { browserHistory } from 'react-router'
-
-let DevTools
-if (__DEV__ && __COMPONENT_DEVTOOLS__) {
-    // 组件形式的 Redux DevTools
-    DevTools = require('COMPONENT/DevTools').default
-}
 const show = (index)=>{
     console.log(index);
     if (index == 0) {
-        browserHistory.push('/msg')
-    }if (index == 1) {
-        browserHistory.push('/todo')
-    }if (index == 2) {
         browserHistory.push('/')
+    }if (index == 1) {
+        browserHistory.push('/')
+    }if (index == 2) {
+        browserHistory.push('/login')
     }
 }
 const App = ({children, location}) => (<MuiThemeProvider>
@@ -27,10 +21,9 @@ const App = ({children, location}) => (<MuiThemeProvider>
                     { children }
                 </div>
             </main>
-            <footer style={{position: 'absolute', width: '100%', height: '10%'}}>
+            <footer style={{position: 'absolute', width: '100%', height: '10%', bottom: '0'}}>
                 <TabBar show={show}/>
             </footer>
-            { DevTools && <DevTools /> }
         </div>
     </MuiThemeProvider>
 )

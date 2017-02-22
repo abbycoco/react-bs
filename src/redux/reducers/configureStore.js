@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
-import DevTools from './redux/reducers/reduxDevTool'
+import DevTools from './reduxDevTool'
 
 
 // 调用日志打印方法
@@ -10,7 +10,7 @@ const loggerMiddleware = createLogger()
 // 创建一个中间件集合
 const middleware = [thunk, loggerMiddleware];
 let configureStore
-if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
+if (__DEV__ && __COMPONENT_DEVTOOLS__) {
     configureStore = compose(
         applyMiddleware(...middleware),
         DevTools.instrument()
@@ -18,6 +18,7 @@ if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
 }else {
     configureStore = compose(
         applyMiddleware(thunk),
+        DevTools.instrument()
     )(createStore);
 }
 

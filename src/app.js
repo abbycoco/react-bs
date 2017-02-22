@@ -3,30 +3,22 @@ import {render} from 'react-dom'
 // 引入redux
 import {Provider} from 'react-redux'
 // 引入router
-import {Router, hashHistory} from 'react-router'
+import {Router, browserHistory} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
 
 import routes from './routes/index'
-import configureStores from './configureStore'
+import configureStores from './redux/reducers/configureStore'
 import DevTools from './redux/reducers/reduxDevTool'
 import rootReducer from './redux/reducers/rooterReducer'
 
 const store = configureStores(rootReducer)  // 路由的store*/
-
-function createElements () {
-    if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
-        return (
-            <DevTools />
-        )
-    }
-}
-const history = syncHistoryWithStore(hashHistory, store)
+const history = syncHistoryWithStore(browserHistory, store)
 render(
     (
         <Provider store={store}>
-            <div className="devtools">
+            <div style={{minHeight: '100%', height: '100%', margin: 0, padding: 0, position: 'relative'}}>
                 <Router history={history} routes={routes}/>
-                {createElements()}
+                 <DevTools/>
             </div>
         </Provider>
     ),

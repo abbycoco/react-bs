@@ -1,10 +1,13 @@
 import React from 'react'
-import {Route, IndexRoute} from 'react-router'
-import Login from '../components/App'
+import {Router, Route} from 'react-router'
+import App from '../components/App'
+import Login from '../components/Login'
 const routes = (
-    <Route path="/">
-      <IndexRoute component={Login}/>
-    </Route>
+    <Router>
+        <Route path='/' components={App}>
+            <Route path='/login' component={Login}/>
+        </Route>
+    </Router>
 )
 
 export default routes
