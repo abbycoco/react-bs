@@ -15,7 +15,7 @@ class UserService {
    */
   login (userData) {
     return xhr({
-      method: 'post',
+      method: 'get',
       url: '/add',
       body: userData
     })
