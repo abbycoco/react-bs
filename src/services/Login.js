@@ -9,6 +9,23 @@ class Login {
             url: '/users/addUser',
             body: Data
         })
+    };
+
+    checkphone(phone) {
+        return xhr({
+            method: 'get',
+            url: '/users/checkuser',
+            body: phone
+        })
+    };
+
+    login(data) {
+        return xhr({
+                method: 'get',
+                url: '/users/login',
+                body: data
+            }
+        )
     }
 }
 export default new Login()

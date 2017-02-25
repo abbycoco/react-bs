@@ -3,12 +3,14 @@
  */
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
-import login from './Login'
-import loginsuc from './Loginsuc'
+import checkinfo from './Checkinfo'
+import logininfo from './Logininfo'
+import user from './User'
 const rootReducer = combineReducers({
     routing: routerReducer,
-    login,
-    loginsuc
+    logininfo,
+    checkinfo,
+    user
 })
 
 export default rootReducer

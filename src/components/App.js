@@ -19,7 +19,7 @@ class App extends React.Component {
             browserHistory.push('/')
         }
         if (index == 2) {
-            if (this.props.Islogin !== undefined && this.props.Islogin.type === 'LOGINSUC') {
+            if (this.props.login !== undefined && this.props.login.type === 'LOGIN') {
                 browserHistory.push('/mine')
             } else {
                 browserHistory.push('/login')
@@ -44,15 +44,13 @@ class App extends React.Component {
         )
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        Islogin: state.loginsuc
-    }
+const logininfo = (state = [], action) => {
+    return state.login
 }
-const mapDispatchToProps = () => {
-    return {}
-}
+const mapStateToProps = (state, action) => ({
+    login: logininfo(state, action)
+})
 
 export default connect(mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(App)

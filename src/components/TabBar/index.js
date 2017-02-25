@@ -24,17 +24,17 @@ class Tabbar extends React.Component {
                 <BottomNavigation selectedIndex={this.state.selectedIndex}>
                     <BottomNavigationItem
                         label="回家"
-                        icon={<img src={house} style={{position: 'relative', width: '40%', flex: '1 1 0%', left: '30%', height: '90%'}}/>}
+                        icon={<img src={house} style={{position: 'relative', width: '20%', flex: '1 1 0%', left: '40%', height: '60%'}}/>}
                         onTouchTap={() => this.select(0)}
                     />
                     <BottomNavigationItem
                         label="爱你"
-                        icon={<img src={chaplin} style={{position: 'relative', width: '40%', flex: '1 1 0%', left: '30%', height: '90%'}}/>}
+                        icon={<img src={chaplin} style={{position: 'relative', width: '20%', flex: '1 1 0%', left: '40%', height: '60%'}}/>}
                         onTouchTap={() => this.select(1)}
                     />
                     <BottomNavigationItem
                         label="比心"
-                        icon={<img src={heart} style={{position: 'relative', width: '40%', flex: '1 1 0%', left: '30%', height: '90%'}}/>}
+                        icon={<img src={heart} style={{position: 'relative', width: '20%', flex: '1 1 0%', left: '40%', height: '60%'}}/>}
                         onTouchTap={() => this.select(2)}
                     />
                 </BottomNavigation>
