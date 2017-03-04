@@ -1,9 +1,6 @@
 /**
  * Created by benben on 17/2/24.
  */
-/**
- * Created by sks on 16/10/10.
- */
 import React from 'react'
 import {connect} from 'react-redux'
 class My extends React.Component {

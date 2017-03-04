@@ -13,7 +13,7 @@ class App extends React.Component {
 
     show = (index) => {
         if (index == 0) {
-            browserHistory.push('/')
+            browserHistory.push('/order')
         }
         if (index == 1) {
             browserHistory.push('/')
