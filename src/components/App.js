@@ -3,6 +3,35 @@ import {connect} from 'react-redux'
 import TabBar from 'COMPONENT/TabBar'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()
+var AMUIReact = require('amazeui-react');
+var Navbar = AMUIReact.Navbar;
+var data = [
+    {
+        title: '呼叫',
+        link: 'tel:123456789',
+        icon: 'phone'
+    },
+    {
+        title: 'GitHub',
+        link: 'https://github.com/allmobilize/amazeui',
+        icon: 'github'
+    },
+    {
+        title: '下载使用',
+        link: 'http://amazeui.org/getting-started',
+        icon: 'download'
+    },
+    {
+        title: 'Bug 反馈',
+        link: 'https://github.com/allmobilize/amazeui/issues',
+        icon: 'location-arrow'
+    }
+];
+
+var handleSelect = function(link, e) {
+    e.preventDefault();
+    console.log('你点击了：', link);
+};
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import {browserHistory} from 'react-router'
 class App extends React.Component {
@@ -27,6 +56,7 @@ class App extends React.Component {
         }
     }
 
+
     render() {
         return (
             <MuiThemeProvider>
@@ -36,6 +66,7 @@ class App extends React.Component {
                             { this.props.children }
                         </div>
                     </main>
+                    <Navbar onSelect={handleSelect} data={data} />
                     <footer style={{position: 'absolute', width: '100%', height: '10%', bottom: '0'}}>
                         <TabBar show={this.show}/>
                     </footer>
