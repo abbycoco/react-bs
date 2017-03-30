@@ -24,7 +24,7 @@ class AddrSelect extends React.Component {
         var options = [];
         if (this.props.city.city != undefined && this.props.city.city.length != 0) {
             this.props.city.city.forEach(function (data) {
-                options.push(<AddrOption name={data.name} id={data.id}/>)
+                options.push(<AddrOption name={data.name} value={data.name} id={data.id}/>)
             }.bind(this));
         }
         return (
@@ -33,6 +33,7 @@ class AddrSelect extends React.Component {
                     name="province"
                     id="province"
                     onChange={this.Selected}
+                    defaultValue={'请选择'}
                 >
                     {options}
                 </select>

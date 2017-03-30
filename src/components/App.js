@@ -16,7 +16,7 @@ class App extends React.Component {
             browserHistory.push('/order')
         }
         if (index == 1) {
-            browserHistory.push('/')
+            browserHistory.push('/ordersimple')
         }
         if (index == 2) {
             if (this.props.login !== undefined && this.props.login.type === 'LOGIN') {

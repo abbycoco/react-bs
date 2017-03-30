@@ -31,6 +31,7 @@ class AddrSelect extends React.Component {
                     name="province"
                     id="province"
                     onChange={this.Selected}
+                    defaultValue={'请选择'}
                 >
                     {options}
                 </select>

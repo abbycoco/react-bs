@@ -12,16 +12,21 @@ import {getProvincelist, getcitylist, getdiqulist} from '../redux/actions/Addres
 class Address extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            province: '',
+            city: '',
+            diqu: ''
+        }
     }
-
     componentDidMount() {
 
     }
-
     select = (e) => {
         this.props.selpro(e);
         let cities = [];
-        console.log(e)
+        this.setState({
+            province: e
+        })
         let a = Addrdress.filter(province => {
             return province.name == e
         })
@@ -31,9 +36,15 @@ class Address extends React.Component {
         this.props.addrcity(cities)
     }
     selteddiqu = (e) => {
+        this.setState({
+            diqu: e
+        })
         this.props.selteddiqu(e);
     }
     seltedcity = (e) => {
+        this.setState({
+            city: e
+        })
         this.props.seltedcity(e);
         let diqu = [];
         let a = Addrdress.filter(province => {
@@ -54,11 +65,13 @@ class Address extends React.Component {
         })
         this.props.addrpro(provinces);
     }
+    componentDidMount() {
+        this.address();
+    }
 
     render() {
         return (
             <div>
-                <input onClick={this.address} type="button" value="qwe"/>
                 <AddrSelect
                     province={this.props.province}
                     select={this.select}

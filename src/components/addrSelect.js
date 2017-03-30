@@ -28,8 +28,8 @@ class AddrSelect extends React.Component {
             <div>
                 <select
                     name="province"
-                    ref="province"
                     onChange={this.Selected}
+                    defaultValue={'请选择'}
                 >
                     {options}
                 </select>
