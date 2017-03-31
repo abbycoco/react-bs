@@ -7,11 +7,12 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {TextField} from 'material-ui'
-import {FlatButton} from 'material-ui'
 import {checkphone} from '../redux/actions/Login'
 import {loginin} from '../redux/actions/Reg'
 import {Link} from 'react-router'
-// import {browserHistory} from 'react-router'
+var AMUIReact = require('amazeui-react');
+var Button = AMUIReact.Button;
+
 class Reg extends React.Component {
     constructor(props) {
         super(props);
@@ -58,20 +59,27 @@ class Reg extends React.Component {
                     floatingLabelText="请输入你的电话"
                     onChange={this.showPhone}
                     errorText={tipinfo}
+                    style={{marginLeft: '10%'}}
                 /><br />
                 <TextField
                     hintText="方便下次使用"
                     floatingLabelText="请输入密码"
                     onChange={this.showPwd}
+                    style={{marginLeft: '10%'}}
                 /><br />
                 {user}
                 <br />
-                <FlatButton label="登录"
-                            primary={true}
-                            onClick={this.login}
-                            disabled={btnclick}
-                /><br />
-                <Link to = '/login'> 木有账号快去注册</Link>
+                <Button
+                    amStyle="success"
+                    onClick={this.login}
+                    disabled={btnclick}
+                    style={{width: '100%', textAlign: 'center', marginBottom: '10%', marginTop: '10%'}}
+                >登录</Button>
+                <Link to = '/login'> <Button
+                    amStyle="default"
+                    style={{width: '100%', textAlign: 'center'}}
+                >木有账号快去注册
+                </Button> </Link>
             </div>
         )
     }

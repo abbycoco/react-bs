@@ -4,7 +4,7 @@ import App from '../components/App'
 import Login from '../components/Login'
 import Reg from '../components/Reg'
 import My from '../components/My'
-import Order from '../components/Order'
+import Order from '../components/List'
 import OrderSimple from '../components/OrderSimple'
 const routes = (
     <Router>
