@@ -13,11 +13,11 @@ class My extends React.Component {
         super(props);
     }
     render() {
-        var name = '';
-        // var phone = '';
-        if (this.props.logininfo !== undefined && this.props.logininfo.session !== undefined) {
-            name = this.props.logininfo.session.name;
-            // phone = this.props.logininfo.session.phone;
+        var myname = '';
+        var myphone = '';
+        if (this.props.user !== undefined && this.props.user.session !== undefined) {
+            myname = this.props.user.session.name;
+            myphone = this.props.user.session.phone;
         }
         return (<div style={{width: '100%', height: '100%'}}>
                <div style={{width: '100%', height: '200px', textAlign: 'center'}}>欢迎登陆 {name}</div>
@@ -26,13 +26,13 @@ class My extends React.Component {
                         <li>
                             <div className="am-thumbnail">
                                 <img src={me} alt=""/>
-                                <p>姓名</p>
+                                <p>{myname}</p>
                             </div>
                         </li>
                         <li>
                             <div className="am-thumbnail">
                             <img src={phone} alt=""/>
-                            <p>电话</p>
+                            <p>{myphone}</p>
                             </div>
                         </li>
                         <li>
@@ -54,9 +54,9 @@ class My extends React.Component {
     }
 }
 const loginState = (state = [], action) => {
-    return state.logininfo
+    return state.user
 }
 const mapStateToProps = (state, action) => ({
-    logininfo: loginState(state, action)
+    user: loginState(state, action)
 })
 export default connect(mapStateToProps)(My)

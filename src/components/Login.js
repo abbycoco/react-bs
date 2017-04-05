@@ -4,11 +4,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
+import {addUser, checkphone} from '../redux/actions/Login'
+import {browserHistory} from 'react-router'
 var AMUIReact = require('amazeui-react');
 var Input = AMUIReact.Input;
 var Button = AMUIReact.Button;
-import {addUser, checkphone} from '../redux/actions/Login'
-import {browserHistory} from 'react-router'
 class Login extends React.Component {
     constructor(props) {
         super(props);
@@ -46,7 +46,7 @@ class Login extends React.Component {
             phone: this.state.phone,
             password: this.state.password
         }));
-        browserHistory.push('/mine')
+        browserHistory.push('/order')
     }
     validate = () => {
         var length = this.state.name.length;

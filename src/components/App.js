@@ -41,7 +41,11 @@ class App extends React.Component {
             browserHistory.push('/order')
         }
         if (link == 1) {
-            browserHistory.push('/ordersimple')
+            if (this.props.user !== undefined && this.props.user.type === 'LOGINSUCE') {
+                browserHistory.push('/ordersimple')
+            } else {
+                browserHistory.push('/login')
+            }
         }
         if (link == 2) {
             if (this.props.login !== undefined && this.props.login.type === 'LOGIN') {
@@ -51,7 +55,12 @@ class App extends React.Component {
             }
         }
         if (link == 3) {
-            browserHistory.push('/mine')
+            console.log('hihih', this.props.user);
+            if (this.props.user !== undefined && this.props.user.type === 'LOGINSUCE') {
+                browserHistory.push('/mine')
+            } else {
+                browserHistory.push('/login')
+            }
         }
     };
     // show = (index) => {
@@ -99,13 +108,15 @@ class App extends React.Component {
         )
     }
 }
-const logininfo = (state = [], action) => {
-    return state.login
+const userinfo = (state, action) => {
+    if (state.user !== undefined) {
+        return state.user
+    }
 }
 const mapStateToProps = (state, action) => ({
-    login: logininfo(state, action)
+    user: userinfo(state, action)
 })
 
-export default connect(mapStateToProps,
+export default connect(
     mapStateToProps
 )(App)

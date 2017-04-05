@@ -9,7 +9,7 @@ const addUser = (Data): Action => (dispatch) => {
     })
     Login.addTodb(Data)
         .then(res => {
-            console.log('err', res)
+            console.log('err', res.result[0])
             if (res.code !== 200) {
                 dispatch({
                     type: 'LOGINERR',
@@ -20,7 +20,7 @@ const addUser = (Data): Action => (dispatch) => {
                 dispatch({
                     type: 'LOGINSUC',
                     info: res.msg,
-                    session: Data
+                    session: res.result[0]
                 })
             }
 

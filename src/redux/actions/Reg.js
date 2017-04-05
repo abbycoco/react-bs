@@ -11,7 +11,7 @@ const loginin = (Data): Action => (dispatch) => {
                 dispatch({
                     type: 'LOGINSUCE',
                     info: res.msg,
-                    session: Data
+                    session: res.result[0]
                 })
 
             }

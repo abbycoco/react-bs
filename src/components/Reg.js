@@ -12,6 +12,7 @@ import {loginin} from '../redux/actions/Reg'
 import {Link} from 'react-router'
 var AMUIReact = require('amazeui-react');
 var Button = AMUIReact.Button;
+import {browserHistory} from 'react-router'
 
 class Reg extends React.Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class Reg extends React.Component {
             phone: this.state.phone,
             password: this.state.password
         }));
+        browserHistory.push('/order')
     }
     render() {
         var tipinfo = '';

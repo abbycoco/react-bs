@@ -1,10 +1,12 @@
 import React from 'react';
 import forms from 'newforms';
 import BootstrapForm from 'newforms-bootstrap';
+import {addOrder} from '../redux/actions/Order'
+import {connect} from 'react-redux'
+import {browserHistory} from 'react-router'
 var AMUIReact = require('amazeui-react');
 var DateTimeInput = AMUIReact.DateTimeInput;
 var {Container, Row, Field} = BootstrapForm;
-
 var ProductForm = forms.Form.extend({
     productName: forms.CharField(),
     tags: forms.CharField(),
@@ -55,17 +57,28 @@ var ProductForm = forms.Form.extend({
 });
 
 
-export default class OrderSimple extends React.Component {
+class OrderSimple extends React.Component {
 
     constructor(props) {
         super(props);
     }
-
-    _onSubmit(refName, e) {
+    _onSubmit = (refName, e) => {
+        if (this.props.usertel === undefined) {
+            browserHistory.push('/login')
+        }
+        console.log(this.refs[refName].getForm().data)
         e.preventDefault()
         this.refs[refName].getForm().validate(() => {})
-        console.log(this.refs['detailDate'].state.value);
-        console.log(this.refs['dateinput'].state.value);
+        this.props.dispatch(addOrder({
+                usertel: this.props.usertel,
+                price: this.refs[refName].getForm().data.Price,
+                endplace: this.refs[refName].getForm().data.endPlace,
+                startplace: this.refs[refName].getForm().data.startPlace,
+                description: this.refs[refName].getForm().data.productDescription,
+                ridetype: this.refs[refName].getForm().data.rideType,
+                Date: this.refs['detailDate'].state.value,
+                detailDate: this.refs['dateinput'].state.value
+        }))
     }
 
     render() {
@@ -90,17 +103,19 @@ export default class OrderSimple extends React.Component {
                                        md="12"/>
                             </Row>
                             <Row name="detailDate">
-                                <DateTimeInput showTimePicker={false}
-                                               format="YYYY-MM-DD"
-                                               ref="detailDate"
+                                <DateTimeInput
+                                    showTimePicker={false}
+                                    format="YYYY-MM-DD"
+                                    ref="detailDate"
 
                                 />
                             </Row>
                             <Row name="dateinput">
-                                <DateTimeInput showDatePicker={false}
-                                               format="HH:mm"
-                                               ref="dateinput"
-                                               md="12"
+                                <DateTimeInput
+                                    showDatePicker={false}
+                                    format="HH:mm"
+                                    ref="dateinput"
+                                    md="12"
                                 />
                             </Row>
                             <Row>
@@ -134,3 +149,10 @@ export default class OrderSimple extends React.Component {
         );
     }
 }
+const user = (state = [], action) => {
+    return state.user.session.phone
+}
+const mapStateToProps = (state, action) => ({
+    usertel: user(state, action)
+})
+export default connect(mapStateToProps)(OrderSimple)
